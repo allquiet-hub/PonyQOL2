@@ -707,13 +707,20 @@ if config.Skip.Enabled then
 
 	if config.Skip.RunDialog then
 		ModUtil.Path.Wrap("PlayTextLines", function(base, source, textLines, args)
-			-- not in a Run
+			-- current not in a Run
 			if CurrentRun.Hero.IsDead then
 				return base(source, textLines, args)
 			end
 
+			-- some encounters have ```textLines`` empty
+			-- like after Hecate boss fight
+			if not textLines then
+				return
+			end
+
 			-- TODO: maybe this could be a var in config, 
 			-- like if its a mainStory line u dont wanna skip
+			-- but in general i think ppl wanna trigger main lines
 			if textLines.StatusAnimation == 'StatusIconWantsToTalk' then
 				return base(source, textLines, args)
 			end
@@ -726,7 +733,6 @@ if config.Skip.Enabled then
 				end
 			end
 			
-				
 			-- skips text lines for everyone else
 			return
 
