@@ -718,11 +718,14 @@ if config.Skip.Enabled then
 				return base(source, textLines, args)
 			end
 
-			-- special NPCs has a choice exit function
-			hasChoice, _ = string.find(textLines.PrePortraitExitFunctionName, 'Choice')
-			if hasChoice then
-				return base(source, textLines, args)
+			if textLines.PrePortraitExitFunctionName then
+				-- special NPCs has a choice exit function
+				hasChoice, _ = string.find(textLines.PrePortraitExitFunctionName, 'Choice')
+				if hasChoice then
+					return base(source, textLines, args)
+				end
 			end
+			
 				
 			-- skips text lines for everyone else
 			return
