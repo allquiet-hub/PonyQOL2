@@ -707,10 +707,37 @@ if config.Skip.Enabled then
 
 	if config.Skip.RunDialog then
 		ModUtil.Path.Wrap("PlayTextLines", function(base, source, textLines, args)
+			-- not in a Run
 			if CurrentRun.Hero.IsDead then
 				return base(source, textLines, args)
 			end
+
+			-- TODO: maybe this could be a var in config, 
+			-- like if its a mainStory line u dont wanna skip
+			if textLines.StatusAnimation == 'StatusIconWantsToTalk' then
+				return base(source, textLines, args)
+			end
+
+			-- TODO: add all others NPC that could be found in a Run
+			if source.Name == 'NPC_Medea_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Icarus_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Narcissus_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Selene_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Circe_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Echo_01' then
+				return base(source, textLines, args)
+			elseif source.Name == 'NPC_Dionysus_01' then
+				return base(source, textLines, args)
+			end
+				
+			-- skips text lines for everyone else
 			return
+
 		end)
 	end
 
