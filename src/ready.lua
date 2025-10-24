@@ -703,6 +703,26 @@ if config.Skip.Enabled then
 
 			FadeIn({ Duration = 0.5 })
 		end)
+
+		if config.Skip.RunEndCutscene.RespawnInTrainingGrounds then
+			mod.HeroKilled = false
+
+			ModUtil.Path.Wrap("KillHero", function(base, victim, triggerArgs)
+				mod.HeroKilled = true
+				base(victim, triggerArgs)
+				mod.HeroKilled = false
+			end)
+
+			modutil.mod.Path.Wrap("LoadMap", function(base, argTable)
+				if mod.HeroKilled then
+					if argTable.Name then
+						argTable.Name = "Hub_PreRun"
+					end
+				end
+
+				base(argTable)
+			end)
+		end
 	end
 
 	if config.Skip.RunDialog then
