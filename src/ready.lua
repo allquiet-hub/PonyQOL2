@@ -703,6 +703,18 @@ if config.Skip.Enabled then
 
 			FadeIn({ Duration = 0.5 })
 		end)
+
+		if config.Skip.RunEndCutscene.RespawnInTrainingGrounds then
+			ModUtil.Path.Context.Wrap("KillHero", function(base, victim, triggerArgs)
+				ModUtil.Path.Wrap("LoadMap", function(base, argTable)
+					rom.log.warning(argTable.Name)
+					if argTable.Name == "Hub_Main" then -- Realistically we don't want to accidentally break any other cutscenes (mini mel)
+						argTable.Name = "Hub_PreRun"
+					end
+					base(argTable)
+				end)
+			end)
+		end
 	end
 
 	if config.Skip.RunDialog then
