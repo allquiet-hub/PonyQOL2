@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.10] - 2025-10-24
+
 - Fix Skip.RunDialog skipping special npc dialogues @lucashort7
 - Change Skip.RespawnInTrainingGrounds implementation @zanncdwbl
 
@@ -145,7 +147,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added boss numeric health
 - Added quit anywhere
 
-[unreleased]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.9...HEAD
+[unreleased]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.10...HEAD
+[0.9.10]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.9...0.9.10
 [0.9.9]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.8...0.9.9
 [0.9.8]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.7...0.9.8
 [0.9.7]: https://github.com/PonyWarrior/PonyQOL2/compare/0.9.6...0.9.7
