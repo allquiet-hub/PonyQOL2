@@ -705,22 +705,14 @@ if config.Skip.Enabled then
 		end)
 
 		if config.Skip.RunEndCutscene.RespawnInTrainingGrounds then
-			mod.HeroKilled = false
-
-			ModUtil.Path.Wrap("KillHero", function(base, victim, triggerArgs)
-				mod.HeroKilled = true
-				base(victim, triggerArgs)
-				mod.HeroKilled = false
-			end)
-
-			modutil.mod.Path.Wrap("LoadMap", function(base, argTable)
-				if mod.HeroKilled then
-					if argTable.Name then
+			ModUtil.Path.Context.Wrap("KillHero", function(base, victim, triggerArgs)
+				ModUtil.Path.Wrap("LoadMap", function(base, argTable)
+					rom.log.warning(argTable.Name)
+					if argTable.Name == "Hub_Main" then -- Realistically we don't want to accidentally break any other cutscenes (mini mel)
 						argTable.Name = "Hub_PreRun"
 					end
-				end
-
-				base(argTable)
+					base(argTable)
+				end)
 			end)
 		end
 	end
