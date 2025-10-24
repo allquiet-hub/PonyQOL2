@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Fix Skip.RunDialog skipping special npc dialogues @lucashort7
+- Change Skip.RespawnInTrainingGrounds implementation @zanncdwbl
+
 ## [0.9.9] - 2025-07-03
 
 ### Changed
